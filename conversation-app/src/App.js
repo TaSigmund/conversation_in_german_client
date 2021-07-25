@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+//dependencies
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+//components
+import Conversations from './components/Conversations'
+import Conversation from './components/Conversation'
+import UnhandledError from './components/UnhandledError'
+import NotFound from './components/NotFound'
+
+/***
+ * ROUTING
+ ***/
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Conversations}/>
+        <Route exact path="/conversations/:id" component={Conversation}/>
+        <Route exact path="/error" component={UnhandledError}/>
+        <Route exact path="/notfound" component={NotFound}/>
+        <Route component={NotFound}/>
+      </Switch>
+    </Router>
   );
 }
 
