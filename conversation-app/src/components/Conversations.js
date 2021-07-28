@@ -1,6 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
+
+/***
+ * HOMEPAGE the user can select a conversation topic from a dropdown menu
+ ***/
 function Conversations() {
     const [conversationTopics, setConversationTopics] = useState([]);
     useEffect(()=>{
@@ -24,7 +28,7 @@ function Conversations() {
                 <Dropdown.Menu>
                     {
                     conversationTopics.map(
-                        topic => {return <Dropdown.Item key={topic.id} href={`/${topic.id}`}>{topic.Topic.English}</Dropdown.Item>}
+                        item => {return <Dropdown.Item key={item.id} href={`/conversations/${item.id}`}>{item.Topic.English}</Dropdown.Item>}
                     )
                     }
                 </Dropdown.Menu>
